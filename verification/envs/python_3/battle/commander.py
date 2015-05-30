@@ -29,7 +29,7 @@ _tower_example = {
     'area_damage_radius': 0,
     'firing_range': 5,
     'action': "charge",
-    'state': "alive"
+
 }
 _unit_example1 = {
     'id': 42,
@@ -45,9 +45,24 @@ _unit_example1 = {
     'area_damage_radius': 0,
     'firing_range': 5,
     'action': "move",
-    'state': "alive"
+
 }
-_unit_example2 = {}
+_unit_example2 = {
+    'id': 41,
+    'player_id': 1,
+    'role': "unit",
+    'hit_points': 100,
+    'size': 0,
+    'speed': 5,
+    'coordinates': [35, 17],
+    'rate_of_fire': 7,
+    'damage_per_shot': 50,
+    'area_damage_per_shot': 0,
+    'area_damage_radius': 0,
+    'firing_range': 5,
+    'action': "move",
+
+}
 _center_example = {
     'id': 1,
     'player_id': 0,
@@ -56,9 +71,10 @@ _center_example = {
     'size': 4,
     'coordinates': [20, 16],
     'action': "idle",
-    'state': "alive"
+
 }
-_buiding_example = {
+
+_building_example = {
     'id': 3,
     'player_id': 0,
     'role': ROLE.BUILDING,
@@ -66,7 +82,7 @@ _buiding_example = {
     'size': 3,
     'coordinates': [30, 16],
     'action': "idle",
-    'state': "alive"
+
 }
 _obstacle_example = {
     'id': 99,
@@ -75,7 +91,7 @@ _obstacle_example = {
     'size': 3,
     'coordinates': [10, 10],
     'action': "idle",
-    'state': "alive"
+
 }
 
 _example_dict = {
@@ -83,7 +99,7 @@ _example_dict = {
     41: _unit_example2,
     10: _tower_example,
     1: _center_example,
-    3: _buiding_example,
+    3: _building_example,
     99: _obstacle_example
 }
 
@@ -119,13 +135,13 @@ class Client(object):
         return _example_dict.values()
 
     def ask_enemy_items(self):
-        return [_center_example, _tower_example, _buiding_example]
+        return [_center_example, _tower_example, _building_example]
 
     def ask_my_items(self):
         return [_unit_example1, _unit_example2]
 
     def ask_buildings(self):
-        return [_buiding_example]
+        return [_building_example]
 
     def ask_towers(self):
         return [_tower_example]
