@@ -18,7 +18,7 @@ To find the nearest enemy, we'll use the `ask_nearest_enemy` command from the cl
 This command will return a dictionary with item data. We only need the `id` now.
 Attack the enemy with the `attack_item` command.
 Next if we want to repeat the action after the enemy is destroyed, use the subscribe method with the
-callback function `subscribe_the_item_is_dead`. As an argument, this function receives the
+callback function `when_item_destroyed`. As an argument, this function receives the
 id of the item which we are watching. As a callback, we can use the same function to
 search for an enemy. Your function can receive a `data` argument which contains the data from a given event.
 Now call your function.
@@ -27,8 +27,8 @@ Now call your function.
 ```python
 def attack_nearest(data=None, *args, **kwargs)
     nearest_enemy = unit_client.ask_nearest_enemy()
-    unit_client.attack_item(nearest_enemy["id"])
-    unit_client.subscribe_the_item_is_dead(nearest_enemy["id"], attack_nearest)
+    unit_client.do_attack(nearest_enemy["id"])
+    unit_client.when_item_destroyed(nearest_enemy["id"], attack_nearest)
 
 attack_nearest()
 ```
@@ -92,15 +92,15 @@ from battle import ROLE
 
 - `ask_nearest_enemy()` Returns information about the nearest enemy item.
 
-- `ask_enemy_items_in_my_firing_range()`  
+- `ask_my_range_enemy_items()`  
     Returns a list with information on all enemies in the current items firing range.
 
 ## Commands.
 
-- `attack_item(item_i)` Attack the item with `id == item_id`.
+- `do_attack(item_i)` Attack the item with `id == item_id`.
     If the target is too far, then unit will move to the target.
 
-- `move_to_point(coordinates)` A unit only command.
+- `do_move(coordinates)` A unit only command.
     Move to the point with the given coordinates. _coordinates_: list/tuple of two int/float.
 
 
@@ -110,19 +110,19 @@ You can subscribe your units to an event, and when this event occurs the _callba
 will be called. The callback function will receive input data related to the subscription.
 All subscriptions are disposable and removed when triggered.
 
-- `subscribe_im_in_area(center, radius, callback)` Triggered when the current unit is in
+- `when_in_area(center, radius, callback)` Triggered when the current unit is in
   the circle. _center_ are the coordinates of the center point and _radius_ is length of circle radius.
 
-- `subscribe_any_item_in_area(center, radius, callback)` The same as `subscribe_im_in_area` but
+- `when_item_in_area(center, radius, callback)` The same as `subscribe_im_in_area` but
   triggered for any item.
 
-- `subscribe_im_idle(callback)` Triggered when the current unit is idle (finishes moving or
+- `when_idle(callback)` Triggered when the current unit is idle (finishes moving or
   destroys an enemy or doesn't have commands).
 
-- `subscribe_enemy_in_my_firing_range(callback)` Triggered when an enemy item is in the current item
+- `when_enemy_in_range(callback)` Triggered when an enemy item is in the current item
   firing range.
 
-- `subscribe_the_item_out_my_firing_range(item_id, callback)` Triggered when the item with _item_id_ is
+- `when_enemy_out_range(item_id, callback)` Triggered when the item with _item_id_ is
   out of the current item firing range.
 
-- `subscribe_the_item_is_dead(item_id, callback)` Triggered when the item with _item_id_ is destroyed.
+- `when_item_destroyed(item_id, callback)` Triggered when the item with _item_id_ is destroyed.

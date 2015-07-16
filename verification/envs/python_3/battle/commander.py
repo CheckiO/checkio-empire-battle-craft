@@ -122,8 +122,9 @@ class Client(object):
     def set_client(cls, client):
         cls.CLIENT = client
 
-    def select(self, fields):
+    def ask(self, fields):
         return {}
+    select = ask
 
     def ask_my_info(self):
         return _unit_example1
@@ -161,40 +162,52 @@ class Client(object):
     def ask_nearest_enemy(self):
         return _center_example
 
-    def ask_enemy_items_in_my_firing_range(self):
+    def ask_my_range_enemy_items(self):
         return [_center_example]
+    ask_enemy_items_in_my_firing_range = ask_my_range_enemy_items
 
-    def attack_item(self, item_id):
+    def do_attack(self, item_id):
         isinstance(item_id, int) and item_id >= 0
+    attack_item = do_attack
 
-    def move_to_point(self, coordinates):
+    def do_move(self, coordinates):
         return isinstance(coordinates, (tuple, list)) and len(coordinates) == 2
+    move_to_point = do_move
 
-    def subscribe(self, event, callback, data=None):
+    def when(self, event, callback, data=None):
         pass
+    subscribe = when
 
     def unsubscribe_all(self):
         pass
 
-    def subscribe_im_in_area(self, center, radius, callback):
+    def when_in_area(self, center, radius, callback):
         return (isinstance(center, (tuple, list)) and len(center) == 2 and
                 isinstance(radius, (int, float)) and radius >= 0)
+    subscribe_im_in_area = when_in_area
 
-    def subscribe_any_item_in_area(self, center, radius, callback):
+    def when_item_in_area(self, center, radius, callback):
         return (isinstance(center, (tuple, list)) and len(center) == 2 and
                 isinstance(radius, (int, float)) and radius >= 0)
+    subscribe_any_item_in_area = when_item_in_area
 
-    def subscribe_im_stop(self, callback):
+    def when_stop(self, callback):
         return True
+    subscribe_im_stop = when_stop
 
-    def subscribe_im_idle(self, callback):
+    def when_idle(self, callback):
         return True
+    subscribe_im_idle = when_idle
 
-    def subscribe_enemy_in_my_firing_range(self, callback):
+    def when_enemy_in_range(self, callback):
         return True
+    subscribe_enemy_in_my_firing_range = when_enemy_in_range
 
-    def subscribe_the_item_out_my_firing_range(self, item_id, callback):
+    def when_enemy_out_range(self, item_id, callback):
         return isinstance(item_id, int) and item_id >= 0
+    subscribe_the_item_out_my_firing_range = when_enemy_out_range
 
-    def subscribe_the_item_is_dead(self, item_id, callback):
+    def when_item_destroyed(self, item_id, callback):
         return isinstance(item_id, int) and item_id >= 0
+    subscribe_the_item_is_dead = when_item_destroyed
+
