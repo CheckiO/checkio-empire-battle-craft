@@ -9,6 +9,6 @@ function attackNearest() {
     });
 }
 
-client.askMyInfo(function () {
+client.start(function () {
     attackNearest();
 });

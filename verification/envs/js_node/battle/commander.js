@@ -5,6 +5,10 @@ function Client() {
     this.myInfo = undefined;
 }
 
+Client.prototype.start = function () {
+    return;
+};
+
 // ASK
 
 Client.prototype.ask = function () {
