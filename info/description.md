@@ -97,7 +97,7 @@ from battle import ROLE
 
 ## Commands.
 
-- `do_attack(item_i)` Attack the item with `id == item_id`.
+- `do_attack(item_id)` Attack the item with `id == item_id`.
     If the target is too far, then unit will move to the target.
 
 - `do_move(coordinates)` A unit only command.
