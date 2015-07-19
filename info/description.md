@@ -25,7 +25,7 @@ Now call your function.
 
 
 ```python
-def attack_nearest(data=None, *args, **kwargs)
+def attack_nearest(data=None, *args, **kwargs):
     nearest_enemy = unit_client.ask_nearest_enemy()
     unit_client.do_attack(nearest_enemy["id"])
     unit_client.when_item_destroyed(nearest_enemy["id"], attack_nearest)
