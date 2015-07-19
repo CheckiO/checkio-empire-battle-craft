@@ -1,12 +1,12 @@
-Here is where we will code our units. All units in the current craft have the same code which runs when a battle start. Units can ask for information about a battle or subscribe to various events.
+Here we will code our units. All units in the current craft have the same code which runs when a battle starts. Units can ask for information about a battle or subscribe to various events.
 
 **You main goal is destroy the enemy center**.
 
 ## Get Started
 
 First we need to start a battle client for our unit.
-This object is the main interface to manage by unit.
-For that use the `commander` module with the `Client` class.
+This object is the main interface to manage a unit.
+Use the `commander` module with the `Client` class.
 
 ```python
 from battle import commander
@@ -39,13 +39,12 @@ After all that, your unit is ready to fight.
 
 Units, towers, buildings and other objects on a map are called "items".
 When you ask for info about items, you will receive a dictionary with the item data, or
-a list of these dictionaries. The item info for can contain various fields.
-Thus it is better to use the `dict.get` method. An item can have the following keys:
+a list of these dictionaries. The item info for can contain various fields, so it is better to use the `dict.get` method. An item can have the following keys:
 
 - "id": (int) Unique identifier of the item. All items has this field.
 - "player_id": (int) Ownership of the item.
 - "role": (str) Describes the role of the item. It can be a `unit`, `tower`, `building`, `center`, or `obstacle`. You can read more below on the different roles.
-- "hit_points": (int/float) Defines the durability of the item. If "hit_points" is zero or below, then
+- "hit_points": (int/float) Defines the durability of the item. If "hit_points" is zero or lower, then
   the item is destroyed.
 - "coordinates": (list of two int/float): Item location coordinates. Units are single point objects.
   For large objects such as buildings, this field contains the coordinates of the center (middle) point.
@@ -68,7 +67,7 @@ from battle import ROLE
 
 - `unit` - Mobile fighting items. Appears from crafts. `ROLE.UNIT`
 - `tower` - Stationary fighting items. `ROLE.TOWER`
-- `center` - Command Centers. The main building. If it's destroyed, then a battle is over. `ROLE.CENTER`
+- `center` - Command Centers. The ain building. If it's destroyed, then the battle is over. `ROLE.CENTER`
 - `building` - All other stationary buildings. `ROLE.BUILDING`
 - `obstacle` - Neutral stationary objects such as rocks. `ROLE.OBSTACLE`
 
@@ -106,7 +105,7 @@ from battle import ROLE
 
 ## Subscribes.
 
-You can subscribe your units to an event, and when this event occurs the _callback_ function
+You can subscribe your units to an event and when this event occurs the _callback_ function
 will be called. The callback function will receive input data related to the subscription.
 All subscriptions are disposable and removed when triggered.
 
