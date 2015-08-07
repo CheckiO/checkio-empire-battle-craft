@@ -112,7 +112,7 @@ All subscriptions are disposable and removed when triggered.
 - `when_in_area(center, radius, callback)` Triggered when the current unit is in
   the circle. _center_ are the coordinates of the center point and _radius_ is length of circle radius.
 
-- `when_item_in_area(center, radius, callback)` The same as `subscribe_im_in_area` but
+- `when_item_in_area(center, radius, callback)` The same as `when_in_area` but
   triggered for any item.
 
 - `when_idle(callback)` Triggered when the current unit is idle (finishes moving or
