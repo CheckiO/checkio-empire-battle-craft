@@ -67,7 +67,7 @@ from battle import ROLE
 
 - `unit` - Mobile fighting items. Appears from crafts. `ROLE.UNIT`
 - `tower` - Stationary fighting items. `ROLE.TOWER`
-- `center` - Command Centers. The ain building. If it's destroyed, then the battle is over. `ROLE.CENTER`
+- `center` - Command Centers. The main building. If it's destroyed, then the battle is over. `ROLE.CENTER`
 - `building` - All other stationary buildings. `ROLE.BUILDING`
 - `obstacle` - Neutral stationary objects such as rocks. `ROLE.OBSTACLE`
 
