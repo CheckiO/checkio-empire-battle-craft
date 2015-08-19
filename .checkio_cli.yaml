@@ -1,0 +1,3 @@
+source:
+  type: git
+  url: https://github.com/CheckiO/checkio-empire-battle-craft.git

@@ -35,6 +35,14 @@ attack_nearest()
 
 After all that, your unit is ready to fight.
 
+## Battle Field
+
+The battle field has size 40 by 40 tiles, but the half of this are occupied by rocks.
+Zero coordinates are placed in the top corner. 
+The next image will help you to understand how axises are located.
+ 
+![map.png](Map Axises)
+ 
 ## Items
 
 Units, towers, buildings and other objects on a map are called "items".
