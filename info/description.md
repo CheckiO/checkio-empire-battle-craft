@@ -41,7 +41,7 @@ The battle field has size 40 by 40 tiles, but the half of this are occupied by r
 Zero coordinates are placed in the top corner. 
 The next image will help you to understand how axises are located.
  
-![map.png](Map Axises)
+![Map Axises](map.png)
  
 ## Items
 
