@@ -1,4 +1,4 @@
-Here we will code our units. All units in the current craft have the same code which runs when a battle starts. Units can ask for information about a battle or subscribe to various events.
+Let's work on some new code for our units. All units in the current craft run the same code which starts when a battle begins. Units can ask for information about a battle or subscribe to various events.
 
 **You main goal is destroy the enemy center**.
 
@@ -37,32 +37,27 @@ After all that, your unit is ready to fight.
 
 ## Battle Field
 
-The battle field has size 40 by 40 tiles, but the half of this are occupied by rocks.
-Zero coordinates are placed in the top corner. 
-The next image will help you to understand how axises are located.
+The battle field has a size of 40 by 40 tiles, but the half of that is occupied by rocks. Zero coordinates are placed in the top corner. This image should help you to understand how axises are located:
  
 ![Map Axises](map.png)
  
 ## Items
 
-Units, towers, buildings and other objects on a map are called "items".
-When you ask for info about items, you will receive a dictionary with the item data, or
-a list of these dictionaries. The item info for can contain various fields, so it is better to use the `dict.get` method. An item can have the following keys:
+Units, towers, buildings and other objects on a map are called "items". When you ask for info about items, you will receive a dictionary with the item data, or a list of these dictionaries. The item info for can contain various fields, so it is better to use the `dict.get` method. An item can have the following keys:
 
-- "id": (int) Unique identifier of the item. All items has this field.
+- "id": (int) Unique identifier of the item. All items have this field.
 - "player_id": (int) Ownership of the item.
 - "role": (str) Describes the role of the item. It can be a `unit`, `tower`, `building`, `center`, or `obstacle`. You can read more below on the different roles.
-- "hit_points": (int/float) Defines the durability of the item. If "hit_points" is zero or lower, then
+- "hit_points": (int/float) Defines the durability of the item. If "hit_points" is zero or lower, than
   the item is destroyed.
 - "coordinates": (list of two int/float): Item location coordinates. Units are single point objects.
   For large objects such as buildings, this field contains the coordinates of the center (middle) point.
-- "size": (int/float) Units don't have a size. All static objects (buildings, towers etc) are
-  square and the edge length is equal to their "size".
+- "size": (int/float) Units don't have a size. All static objects (buildings, towers etc) are square and the edge length is equal to their "size".
 - "action": (str) What the item is doing. It can be `idle`, `move`, `shoot`, or `charge`.
 - "speed": (int/float) This is a unit attribute only. It describes how fast the unit may move.
 - "damage_per_shot": (int/float) This is a unit/tower attribute which describes how many hit points a shot will take.
-- "rate_of_fire": (int/float) This is a unit/tower attributewhich describes how many shots per second the item can do.
-- "firing_range": (int/float) This is a unit/tower attributewhich describes the maximum distance it can shoot.
+- "rate_of_fire": (int/float) This is a unit/tower attribute which describes how many shots per second the item can take.
+- "firing_range": (int/float) This is a unit/tower attribute which describes the maximum distance it can shoot.
 
 
 ### Roles
@@ -100,12 +95,12 @@ from battle import ROLE
 - `ask_nearest_enemy()` Returns information about the nearest enemy item.
 
 - `ask_my_range_enemy_items()`  
-    Returns a list with information on all enemies in the current items firing range.
+    Returns a list with information on all enemies in the current item's firing range.
 
 ## Commands.
 
 - `do_attack(item_id)` Attack the item with `id == item_id`.
-    If the target is too far, then unit will move to the target.
+    If the target is too far, then the unit will move to the target.
 
 - `do_move(coordinates)` A unit only command.
     Move to the point with the given coordinates. _coordinates_: list/tuple of two int/float.
@@ -117,8 +112,7 @@ You can subscribe your units to an event and when this event occurs the _callbac
 will be called. The callback function will receive input data related to the subscription.
 All subscriptions are disposable and removed when triggered.
 
-- `when_in_area(center, radius, callback)` Triggered when the current unit is in
-  the circle. _center_ are the coordinates of the center point and _radius_ is length of circle radius.
+- `when_in_area(center, radius, callback)` Triggered when the current unit is in the circle. _center_ describes the coordinates of the center point and _radius_ describes the length of the circle's radius.
 
 - `when_item_in_area(center, radius, callback)` The same as `when_in_area` but
   triggered for any item.
@@ -126,10 +120,10 @@ All subscriptions are disposable and removed when triggered.
 - `when_idle(callback)` Triggered when the current unit is idle (finishes moving or
   destroys an enemy or doesn't have commands).
 
-- `when_enemy_in_range(callback)` Triggered when an enemy item is in the current item
+- `when_enemy_in_range(callback)` Triggered when an enemy item is in the current item's
   firing range.
 
 - `when_enemy_out_range(item_id, callback)` Triggered when the item with _item_id_ is
-  out of the current item firing range.
+  out of the current item's firing range.
 
 - `when_item_destroyed(item_id, callback)` Triggered when the item with _item_id_ is destroyed.
