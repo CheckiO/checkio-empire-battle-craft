@@ -97,6 +97,9 @@ from battle import ROLE
 - `ask_my_range_enemy_items()`  
     Returns a list with information on all enemies in the current item's firing range.
 
+- `ask_cur_time`
+    Returns current in-game time. (secs)
+
 ## Commands.
 
 - `do_attack(item_id)` Attack the item with `id == item_id`.
@@ -104,6 +107,16 @@ from battle import ROLE
 
 - `do_move(coordinates)` A unit only command.
     Move to the point with the given coordinates. _coordinates_: list/tuple of two int/float.
+
+### LEVEL 4
+
+for units with level 4 or more.
+
+- `do_message_to_id(message, item_id)` send a message to unit with `item_id`
+
+- `do_message_to_craft(message)` send a message to all units from your craft
+
+- `do_message_to_team(message)` send a message to all units from your team
 
 
 ## Subscribes.
@@ -127,3 +140,15 @@ All subscriptions are disposable and removed when triggered.
   out of the current item's firing range.
 
 - `when_item_destroyed(item_id, callback)` Triggered when the item with _item_id_ is destroyed.
+
+### LEVEL 2
+
+for units with level 2 or more.
+
+- `when_time(secs, callback)` Triggered in a specific game time. Very useful for sincrinisation units
+
+### LEVEL 4
+
+for units with level 4 or more.
+
+- `when_message(callback, infinity=True)` Triggered when unit gets message from another unit. `infinity` argument show that user don't need to subscribe on the event again after getting the message if it wants to get it again. The `callback` function get one argument as a dict with two keyses `message` and `from_id` 
