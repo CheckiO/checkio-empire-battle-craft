@@ -16,56 +16,61 @@ Client.prototype.ask = function () {
 };
 
 Client.prototype.askMyInfo = function () {
-    return;
+    return {};
 };
 
 Client.prototype.askItemInfo = function () {
-    return;
+    return {};
 };
 
 Client.prototype.askNearestEnemy = function () {
-    return;
+    return {};
 };
 
 Client.prototype.askItems = function () {
-    return;
+    return [];
 };
 
 Client.prototype.askEnemyItems = function () {
-    return;
+    return [];
 };
 
 Client.prototype.askMyItems = function () {
-    return;
+    return [];
 };
 
 Client.prototype.askBuildings = function () {
-    return;
+    return [];
 };
 
 Client.prototype.askTowers = function () {
-    return;
+    return [];
 };
 
 Client.prototype.askCenter = function () {
-    return;
+    return {};
 };
 
 Client.prototype.askUnits = function () {
-    return;
+    return [];
 };
 
 Client.prototype.askPlayers = function () {
-    return;
+    return [];
 };
 
 Client.prototype.askEnemyPlayers = function () {
-    return;
+    return [];
 };
 
 Client.prototype.askMyRangeEnemyItems = function () {
-    return;
+    return [];
 };
+
+Client.prototype.askCurTime = function () {
+    return [];
+};
+
 
 // DO
 
@@ -81,42 +86,62 @@ Client.prototype.doMove = function () {
     return;
 };
 
+Client.prototype.doMessageToId = function (message, id) {
+    return;
+};
+
+Client.prototype.doMessageToCraft = function (message, id) {
+    return;
+};
+
+Client.prototype.doMessageToTeam = function (message, id) {
+    return;
+};
+
 // SUBSCRIBE
 
 Client.prototype.when = function () {
-    return;
+    return new Promise(function(){});
 };
 
 Client.prototype.unSubscribeAll = function () {
-    return;
+    return this.when();
 };
 
 Client.prototype.whenInArea = function () {
-    return;
+    return this.when();
 };
 
 Client.prototype.whenItemInArea = function () {
-    return;
+    return this.when();
 };
 
 Client.prototype.whenStoped = function () {
-    return;
+    return this.when();
 };
 
 Client.prototype.whenIdle = function () {
-    return;
+    return this.when();
 };
 
 Client.prototype.whenEnemyInRange = function () {
-    return;
+    return this.when();
 };
 
 Client.prototype.whenEnemyOutRange = function () {
-    return;
+    return this.when();
 };
 
 Client.prototype.whenItemDestroyed = function () {
-    return;
+    return this.when();
+};
+
+Client.prototype.whenTime = function () {
+    return this.when();
+};
+
+Client.prototype.whenMessage = function () {
+    return this.when();
 };
 
 exports.Client = Client;
