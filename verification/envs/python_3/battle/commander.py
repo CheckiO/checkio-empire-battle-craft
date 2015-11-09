@@ -166,6 +166,9 @@ class Client(object):
         return [_center_example]
     ask_enemy_items_in_my_firing_range = ask_my_range_enemy_items
 
+    def ask_cur_time(self):
+        return 1
+
     def do_attack(self, item_id):
         isinstance(item_id, int) and item_id >= 0
     attack_item = do_attack
@@ -173,6 +176,15 @@ class Client(object):
     def do_move(self, coordinates):
         return isinstance(coordinates, (tuple, list)) and len(coordinates) == 2
     move_to_point = do_move
+
+    def do_message_to_id(self, message, item_id):
+        return
+
+    def do_message_to_craft(self, message):
+        return
+
+    def do_message_to_team(self, message):
+        return
 
     def when(self, event, callback, data=None):
         pass
@@ -211,3 +223,8 @@ class Client(object):
         return isinstance(item_id, int) and item_id >= 0
     subscribe_the_item_is_dead = when_item_destroyed
 
+    def when_time(self, secs, callback):
+        pass
+
+    def when_message(self, callback, infinity=True):
+        pass

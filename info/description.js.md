@@ -79,26 +79,29 @@ from battle import ROLE
 
 ## Ask info
 
-- `askMyInfo(callback)` Returns information about the current item.
+- `askMyInfo()` Returns information about the current item.
 
-- `askItemInfo(item_id, callback)` Returns information about the item with `id == item_id` or None.
+- `askItemInfo(item_id)` Returns information about the item with `id == item_id` or None.
 
-- `askEnemyItems(callback)` Returns a list with information on the enemy items.
+- `askEnemyItems()` Returns a list with information on the enemy items.
 
-- `askMyItems(callback)` Returns a list with information on your items.
+- `askMyItems()` Returns a list with information on your items.
 
-- `askBuildings(callback)` Returns a list with information for all buildings including the Command Center.
+- `askBuildings()` Returns a list with information for all buildings including the Command Center.
 
-- `askTowers(callback)` Return a list with information of all towers.
+- `askTowers()` Return a list with information of all towers.
 
-- `askCenter(callback)` Returns information about the Command Center.
+- `askCenter()` Returns information about the Command Center.
 
-- `askUnits(callback)` Returns a list with information for all units.
+- `askUnits()` Returns a list with information for all units.
 
-- `askNearestEnemy(callback)` Returns a list with information on all enemies in the current item's firing range.
+- `askNearestEnemy()` Returns a list with information on all enemies in the current item's firing range.
 
 - `askMyRangeEnemyItems()`  
     Returns a list with information on all enemies in the current items firing range.
+
+- `askCurTime()`
+    Returns current in-game time. (secs)
 
 ## Commands.
 
@@ -108,6 +111,16 @@ from battle import ROLE
 - `doMove(coordinates)` A unit only command.
     Move to the point with the given coordinates. _coordinates_: list/tuple of two int/float.
 
+### LEVEL 4
+
+for units with level 4 or more.
+
+- `doMessageToId(message, item_id)` send a message to unit with `item_id`
+
+- `doMessageToCraft(message)` send a message to all units from your craft
+
+- `doMessageToTeam(message)` send a message to all units from your team
+
 
 ## Subscribes.
 
@@ -115,6 +128,13 @@ You can subscribe your units to an event and when this event occurs the _callbac
 will be called. The callback function will receive input data related to the subscription.
 All subscriptions are disposable and removed when triggered.
 
+_every function in this category returns a promice object so you can pass your callback function into its then method. For example:_
+
+```javascript
+client.whenItemDestroyed(data.id).then(attackNearest);
+```
+
+_Here https://www.promisejs.org/ you can find more about promices functionality_
 
 - `whenInArea(center, radius, callback)` Triggered when the current unit is in the circle. _center_ describes the coordinates of the center point and _radius_ describes the length of the circle's radius.
 
@@ -132,3 +152,14 @@ All subscriptions are disposable and removed when triggered.
 
 - `whenItemDestroyed(item_id, callback)` Triggered when the item with _item_id_ is destroyed.
 
+### LEVEL 2
+
+for units with level 2 or more.
+
+- `whenTime(secs)` Triggered in a specific game time. Very useful for sincrinisation units
+
+### LEVEL 4
+
+for units with level 4 or more.
+
+- `whenMessage(callback)` Triggered when unit gets message from another unit. Be aware that promice will be resolve for only the first message  in stack. If you want to get one more you should call whenMessage again.
