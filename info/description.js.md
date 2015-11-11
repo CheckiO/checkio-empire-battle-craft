@@ -133,21 +133,21 @@ client.whenItemDestroyed(data.id).then(attackNearest);
 
 _Here https://www.promisejs.org/ you can find more about promices functionality_
 
-- `whenInArea(center, radius, callback)` Triggered when the current unit is in the circle. _center_ describes the coordinates of the center point and _radius_ describes the length of the circle's radius.
+- `whenInArea(center, radius)` Triggered when the current unit is in the circle. _center_ describes the coordinates of the center point and _radius_ describes the length of the circle's radius.
 
-- `whenItemInArea(center, radius, callback)` The same as `whenInArea` but
+- `whenItemInArea(center, radius)` The same as `whenInArea` but
   triggered for any item.
 
-- `whenIdle(callback)` Triggered when the current unit is idle (finishes moving or
+- `whenIdle()` Triggered when the current unit is idle (finishes moving or
   destroys an enemy or doesn't have commands).
 
-- `whenEnemyInRange(callback)` Triggered when an enemy item is in the current item's
+- `whenEnemyInRange()` Triggered when an enemy item is in the current item's
    firing range.
 
-- `whenEnemyOutRange(item_id, callback)` Triggered when the item with _item_id_ is
+- `whenEnemyOutRange(item_id)` Triggered when the item with _item_id_ is
   out of the current item's firing range.
 
-- `whenItemDestroyed(item_id, callback)` Triggered when the item with _item_id_ is destroyed.
+- `whenItemDestroyed(item_id)` Triggered when the item with _item_id_ is destroyed.
 
 ### LEVEL 2
 
@@ -159,4 +159,4 @@ for units with level 2 or more.
 
 for units with level 4 or more.
 
-- `whenMessage(callback)` Triggered when unit gets message from another unit. Be aware that promice will be resolve for only the first message  in stack. If you want to get one more you should call whenMessage again.
+- `whenMessage()` Triggered when unit gets message from another unit. Be aware that promice will be resolve for only the first message  in stack. If you want to get one more you should call whenMessage again.
