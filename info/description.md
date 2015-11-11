@@ -1,4 +1,4 @@
-Let's work on some new code for our units. All units in the current craft run the same code which starts when a battle begins. Units can ask for information about a battle or subscribe to various events.
+Let's work on some new code for our units. All units in the current craft run the same code, which starts when a battle begins. Units can ask for information about a battle or subscribe to various events.
 
 **You main goal is destroy the enemy center**.
 
@@ -43,12 +43,12 @@ The battle field has a size of 40 by 40 tiles, but the half of that is occupied 
  
 ## Items
 
-Units, towers, buildings and other objects on a map are called "items". When you ask for info about items, you will receive a dictionary with the item data, or a list of these dictionaries. The item info for can contain various fields, so it is better to use the `dict.get` method. An item can have the following keys:
+Units, towers, buildings and other objects on a map are called "items". When you ask for info about items, you will receive a dictionary with the item data, or a list of these dictionaries. The item info can contain various fields, so it is better to use the `dict.get` method. An item can have the following keys:
 
 - "id": (int) Unique identifier of the item. All items have this field.
 - "player_id": (int) Ownership of the item.
 - "role": (str) Describes the role of the item. It can be a `unit`, `tower`, `building`, `center`, or `obstacle`. You can read more below on the different roles.
-- "hit_points": (int/float) Defines the durability of the item. If "hit_points" is zero or lower, than
+- "hit_points": (int/float) Defines the durability of the item. If "hit_points" is zero or lower, then
   the item is destroyed.
 - "coordinates": (list of two int/float): Item location coordinates. Units are single point objects.
   For large objects such as buildings, this field contains the coordinates of the center (middle) point.
@@ -121,7 +121,7 @@ for units with level 4 or more.
 
 ## Subscribes.
 
-You can subscribe your units to an event and when this event occurs the _callback_ function
+You can subscribe your units to an event and when this event occurs, the _callback_ function
 will be called. The callback function will receive input data related to the subscription.
 All subscriptions are disposable and removed when triggered.
 
@@ -145,7 +145,7 @@ All subscriptions are disposable and removed when triggered.
 
 for units with level 2 or more.
 
-- `when_time(secs, callback)` Triggered in a specific game time. Very useful for sincrinisation units
+- `when_time(secs, callback)` Triggered in a specific game time. Very useful for synchronization units.
 
 ### LEVEL 4
 
