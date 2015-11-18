@@ -74,47 +74,47 @@ from battle import ROLE
 
 ## Ask info
 
-- `askMyInfo()` Returns information about the current item.
+- `ask_my_info()` Returns information about the current item.
 
-- `askItemInfo(item_id)` Returns information about the item with `id == item_id` or None.
+- `ask_item_info(item_id)` Returns information about the item with `id == item_id` or None.
 
-- `askEnemyItems()` Returns a list with information on the enemy items.
+- `ask_enemy_items()` Returns a list with information on the enemy items.
 
-- `askMyItems()` Returns a list with information on your items.
+- `ask_my_items()` Returns a list with information on your items.
 
-- `askBuildings()` Returns a list with information for all buildings including the Command Center.
+- `ask_buildings()` Returns a list with information for all buildings including the Command Center.
 
-- `askTowers()` Returns a list with information for all towers.
+- `ask_towers()` Returns a list with information for all towers.
 
-- `askCenter()` Returns information about the Command Center.
+- `ask_center()` Returns information about the Command Center.
 
-- `askUnits()` Returns a list with information for all units.
+- `ask_units()` Returns a list with information for all units.
 
-- `askNearestEnemy()` Returns a list with information on all enemies in the current item's firing range.
+- `ask_nearest_enemy()` Returns a list with information on all enemies in the current item's firing range.
 
-- `askMyRangeEnemyItems()`  
+- `ask_my_range_enemy_items()`  
     Returns a list with information on all enemies in the current items firing range.
 
-- `askCurTime()`
+- `ask_cur_time()`
     Returns current in-game time. (secs)
 
 ## Commands.
 
-- `doAttack(item_id)` Attack the item with `id == item_id`.
+- `do_attack(item_id)` Attack the item with `id == item_id`.
     If the target is too far, then the unit will move to the target.
 
-- `doMove(coordinates)` A unit only command.
+- `do_move(coordinates)` A unit only command.
     Move to the point with the given coordinates. _coordinates_: list/tuple of two int/float.
 
 ### LEVEL 4
 
 for units with level 4 or more.
 
-- `doMessageToId(message, item_id)` send a message to a unit with `item_id`.
+- `do_message_to_id(message, item_id)` send a message to a unit with `item_id`.
 
-- `doMessageToCraft(message)` send a message to all units from your craft.
+- `do_message_to_craft(message)` send a message to all units from your craft.
 
-- `doMessageToTeam(message)` send a message to all units from your team.
+- `do_message_to_team(message)` send a message to all units from your team.
 
 
 ## Subscribes.
@@ -123,29 +123,29 @@ You can subscribe your units to an event and when this event occurs the _callbac
 will be called. The callback function will receive input data related to the subscription.
 All subscriptions are disposable and removed when triggered.
 
-- `whenInArea(center, radius)` Is triggered when the current unit is in the circle. _center_ describes the coordinates of the center point and _radius_ describes the length of the circle's radius.
+- `when_in_area(center, radius, callback)` Is triggered when the current unit is in the circle. _center_ describes the coordinates of the center point and _radius_ describes the length of the circle's radius.
 
-- `whenItemInArea(center, radius)` The same as `whenInArea` but gets triggered for any item.
+- `when_item_in_area(center, radius, callback)` The same as `whenInArea` but gets triggered for any item.
 
-- `whenIdle()` Is triggered when the current unit is idle (finishes moving,
+- `when_idle(callback)` Is triggered when the current unit is idle (finishes moving,
   destroys an enemy or doesn't have commands).
 
-- `whenEnemyInRange()` Is triggered when an enemy item is in the current item's
+- `when_enemy_in_range(callback)` Is triggered when an enemy item is in the current item's
    firing range.
 
-- `whenEnemyOutRange(item_id)` Is triggered when the item with _item_id_ is
+- `when_enemy_out_range(item_id, callback)` Is triggered when the item with _item_id_ is
   out of the current item's firing range.
 
-- `whenItemDestroyed(item_id)` Is triggered when the item with _item_id_ is destroyed.
+- `when_item_destroyed(item_id, callback)` Is triggered when the item with _item_id_ is destroyed.
 
 ### LEVEL 2
 
 for units with level 2 or more.
 
-- `whenTime(secs)` Is triggered at a specific game time. Very useful for the synchronization of units.
+- `when_time(secs, callback)` Is triggered at a specific game time. Very useful for the synchronization of units.
 
 ### LEVEL 4
 
 for units with level 4 or more.
 
-- `whenMessage()` Is triggered when a unit gets a message from another unit. Be aware that promise only resolve the first message in the stack. If you want to get another, you should call whenMessage again.
+- `when_message(callback, infinity=True)` Is triggered when a unit gets a message from another unit. Be aware that promise only resolve the first message in the stack. If you want to get another, you should call whenMessage again.
