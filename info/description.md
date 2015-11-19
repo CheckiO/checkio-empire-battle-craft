@@ -148,4 +148,4 @@ for units with level 2 or more.
 
 for units with level 4 or more.
 
-- `when_message(callback, infinity=True)` Is triggered when a unit gets a message from another unit. Be aware that promise only resolve the first message in the stack. If you want to get another, you should call whenMessage again.
+- `when_message(callback, infinity=True)` Is triggered when a unit gets a message from another unit. The `infinity` argument indicates that you don't need to subscribe on the event again after getting the message and should be used if you want use `when_message` again. The `callback` function gets one argument as a dict with `message` and `from_id`.
