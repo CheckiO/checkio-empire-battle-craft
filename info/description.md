@@ -1,39 +1,48 @@
-Let's work on some new code for our units. All units in the current craft run the same code which starts when a battle begins. Units can ask for information about a battle or subscribe to various events.
+Let's work on some new code for our units. All units in the current craft run the same code which starts when a battle begins. The script you are currently writing will command one in craft. So if craft has 7 units inside that means 7 copies of this script will be launched.
 
-**Your main goal is to destroy the enemy center**.
+The commading principle are based on 3 main groups of function.
 
-## Get Started
-
-First we need to start a battle client for our unit.
-This object is the main interface to manage a unit.
-Use the `commander` module with the `Client` class.
+**Asks** are starting with _ask_. Ask functions provide information about the unit you control or envieroument around it. For instance the following code...
 
 ```python
 from battle import commander
 unit_client = commander.Client()
+my_info = unit_client.ask_my_info()
+print("My ID:{}".format(my_info['id']))
 ```
 
-Next we need the code to launch. This will kick off when we want our unit to attack the nearest enemy.
-To find the nearest enemy, we'll use the `ask_nearest_enemy` command from the client.
-This command will return a dictionary with the item data. We only need the `id` now.
-Attack the enemy with the `attack_item` command.
-Next if we want to repeat the action after the enemy is destroyed, use the subscribe method with the
-callback function `when_item_destroyed`. As an argument, this function receives the
-id of the item which we are watching. As a callback, we can use the same function to
-search for an enemy. Your function can receive a `data` argument which contains the data from a given event.
-Now call your function.
+... shows unit's ID in the battle console
 
+**Actions** are starting with _do_. Action function send a commant to unit. Unit can hold information only about one the last command so evry next command will overwrite previous one. For instance the following code...
 
 ```python
-def attack_nearest(data=None, *args, **kwargs):
-    nearest_enemy = unit_client.ask_nearest_enemy()
-    unit_client.do_attack(nearest_enemy["id"])
-    unit_client.when_item_destroyed(nearest_enemy["id"], attack_nearest)
-
-attack_nearest()
+from battle import commander
+unit_client = commander.Client()
+unit_client.do_move((30, 30))
+unit_client.do_move((20, 30))
 ```
 
-After all that, your unit is ready to fight.
+... commands unit to go to the point (20, 30), but the unit will never get to the point (30, 30)
+
+**Subscribtions** are started with _when_. Subscribe function is always has a callback argument. Callback is the function that will be called when specific action occurs. For instance the following code...
+
+```python
+from battle import commander
+unit_client = commander.Client()
+
+def attack_near_enemy(data):
+    unit_client.do_attack(data['id'])
+
+unit_client.when_enemy_in_range(attack_near_enemy)
+```
+
+... commands user to attack any enemy that gets into its attacking range.
+
+**Prints** feel free to user _print_ function a see every script output at the right pannel of battle replays.
+
+
+**Your main goal is to destroy the enemy center**.
+
 
 ## Battle Field
 
