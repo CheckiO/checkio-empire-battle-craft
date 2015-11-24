@@ -24,7 +24,7 @@ unit_client.do_move((20, 30))
 
 ... commands unit to go to the point (20, 30), but the unit will never get to the point (30, 30)
 
-**Subscribtions** are started with _when_. Subscribe function is always has a callback argument. Callback is the function that will be called when specific action occurs. For instance the following code...
+**Subscriptions** are started with _when_. Subscribe function is always has a callback argument. Callback is the function that will be called when specific action occurs. For instance the following code...
 
 ```python
 from battle import commander
@@ -38,7 +38,7 @@ unit_client.when_enemy_in_range(attack_near_enemy)
 
 ... commands user to attack any enemy that gets into its attacking range.
 
-**Prints** feel free to user _print_ function a see every script output at the right pannel of battle replays.
+**Prints**. Feel free to user _print_ function and see every script's output at the right pannel of battle replays.
 
 
 **Your main goal is to destroy the enemy center**.
