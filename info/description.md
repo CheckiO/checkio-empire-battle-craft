@@ -1,8 +1,8 @@
-Let's work on some new code for our units. All units in the current craft run the same code which starts when a battle begins. The script you are currently writing will command one in craft. So if craft has 7 units inside that means 7 copies of this script will be launched.
+Let's work on some new code for our units. All units in the current craft run the same code which starts when a battle begins. The script you are currently writing will command one craft. So if a craft has 7 units inside, that means 7 copies of this script will be launched.
 
-The commading principle are based on 3 main groups of function.
+The commanding principles are based on the 3 main groups of functions.
 
-**Asks** are starting with _ask_. Ask functions provide information about the unit you control or envieroument around it. For instance the following code...
+**Asks** are started with _ask_. Ask functions provide information about the unit you control or environment around it. For example, check out the following code...
 
 ```python
 from battle import commander
@@ -11,9 +11,9 @@ my_info = unit_client.ask_my_info()
 print("My ID:{}".format(my_info['id']))
 ```
 
-... shows unit's ID in the battle console
+... this shows a unit's ID in the battle console.
 
-**Actions** are starting with _do_. Action function send a commant to unit. Unit can hold information only about one the last command so evry next command will overwrite previous one. For instance the following code...
+**Actions** are started with _do_. The Action function sends a command to a unit. The unit can only hold information about the last command, so every following command will overwrite previous one. Check out this code...
 
 ```python
 from battle import commander
@@ -22,9 +22,9 @@ unit_client.do_move((30, 30))
 unit_client.do_move((20, 30))
 ```
 
-... commands unit to go to the point (20, 30), but the unit will never get to the point (30, 30)
+... That code commands units to go to the point (20, 30), but the unit will never get to the point (30, 30).
 
-**Subscriptions** are started with _when_. Subscribe function is always has a callback argument. Callback is the function that will be called when specific action occurs. For instance the following code...
+**Subscriptions** are started with _when_. The subscribe function always has a callback argument. Callback is the function that gets called when a specific action occurs. For example:
 
 ```python
 from battle import commander
@@ -36,9 +36,9 @@ def attack_near_enemy(data):
 unit_client.when_enemy_in_range(attack_near_enemy)
 ```
 
-... commands user to attack any enemy that gets into its attacking range.
+... That commands the unit to attack any enemy that comes into its firing range.
 
-**Prints**. Feel free to user _print_ function and see every script's output at the right pannel of battle replays.
+**Prints**. Feel free to use the _print_ function and see every script's output in the right-hand panel for battle replays.
 
 
 **Your main goal is to destroy the enemy center**.
