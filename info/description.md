@@ -61,7 +61,6 @@ Units, towers, buildings and other objects on the map are called "items". When y
 - "coordinates": (list of two int/float): The item's location coordinates. Units are single point objects.
   For large objects such as buildings, this field contains the coordinates of the center (middle) point.
 - "size": (int/float) Units don't have a size. All static objects (buildings, towers etc) are square and the edge length is equal to their "size".
-- "action": (str) What the item is doing. It can be `idle`, `move`, `shoot`, or `charge`.
 - "speed": (int/float) This is a unit attribute only. It describes how fast the unit may move.
 - "damage_per_shot": (int/float) This is a unit/tower attribute which describes how many hit points an attack will take.
 - "rate_of_fire": (int/float) This is a unit/tower attribute which describes how many attacks per second the item can take.
