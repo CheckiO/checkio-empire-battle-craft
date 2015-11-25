@@ -1,17 +1,15 @@
 **Example:**
 
 ```javascript
+"use strict";
 var Client = require("battle/commander.js").Client;
 var client = new Client();
 
 function attackNearest() {
-    client.askNearestEnemy(function (data) {
-        client.doAttack(data.id);
-        client.whenItemDestroyed(data.id, attackNearest);
-    });
+    var data = client.askNearestEnemy();
+    client.doAttack(data.id);
+    client.whenItemDestroyed(data.id).then(attackNearest);
 }
 
-client.askMyInfo(function () {
-    attackNearest();
-});
+attackNearest();
 ```
