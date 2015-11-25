@@ -1,40 +1,48 @@
-Let's work on some new code for our units. All units in the current craft run the same code which starts when a battle begins. Units can ask for information about a battle or subscribe to various events.
+Let's work on some new code for our units. All units in the current craft run the same code which starts when a battle begins. The script you are currently writing will command one craft. So if a craft has 7 units inside, that means 7 copies of this script will be launched.
 
-**Your main goal is to destroy the enemy center**.
+The commanding principles are based on the 3 main groups of functions.
 
-## Get Started
-
-First we need to start a battle client for our unit.
-This object is the main interface to manage a unit.
-Use the `commander` module with the `Client` class.
+**Asks** are started with _ask_. Ask functions provide information about the unit you control or environment around it. For example, check out the following code...
 
 ```javascript
 var Client = require("battle/commander.js").Client;
 var client = new Client();
+myInfo = client.askMyInfo();
+console.log("My ID: " + myInfo.id);
 ```
 
-Next we need the code to launch. This will kick off when we want our unit to attack the nearest enemy.
-To find the nearest enemy, we'll use the `ask_nearest_enemy` command from the client.
-This command will return a dictionary with the item data. We only need the `id` now.
-Attack the enemy with the `attack_item` command.
-Next if we want to repeat the action after the enemy is destroyed, use the subscribe method with the
-callback function `when_item_destroyed`. As an argument, this function receives the
-id of the item which we are watching. As a callback, we can use the same function to
-search for an enemy. Your function can receive a `data` argument which contains the data from a given event.
-Now call your function.
+... this shows a current unit's ID in the battle console.
 
+**Actions** are started with _do_. The Action function sends a command to a unit. The unit can only hold information about the last command, so every following command will overwrite previous one. For example, check out the following code...
 
 ```javascript
-function attackNearest() {
-    var data = client.askNearestEnemy();
-    client.doAttack(data.id);
-    client.whenItemDestroyed(data.id).then(attackNearest);
-}
-
-attackNearest();
+var Client = require("battle/commander.js").Client;
+var client = new Client();
+client.doMove((30, 30));
+client.doMove((20, 30));
 ```
 
-After all that, your unit is ready to fight.
+... that code commands units to go to the point (20, 30), but the unit will never get to the point (30, 30).
+
+**Subscriptions** are started with _when_. The subscribe function always has a callback argument. Callback is the function that gets called when a specific event occurs. For example, check out the following code...
+
+```javascript
+var Client = require("battle/commander.js").Client;
+var client = new Client();
+
+function attackNearEnemy(data){
+    client.doAttack(data.id);
+}
+
+client.whenEnemyInRange(attackNearEnemy);
+```
+
+... that commands the unit to attack any enemy that comes into its firing range.
+
+**Logs**. Feel free to use the _console.log_ function and see every script's output in the right-hand panel for battle replays.
+
+**Your main goal is to destroy the enemy center**.
+
 
 ## Battle Field
 
