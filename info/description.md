@@ -11,7 +11,7 @@ my_info = unit_client.ask_my_info()
 print("My ID:{}".format(my_info['id']))
 ```
 
-... this shows a unit's ID in the battle console.
+... this shows a current unit's ID in the battle console.
 
 **Actions** are started with _do_. The Action function sends a command to a unit. The unit can only hold information about the last command, so every following command will overwrite previous one. For example, check out the following code...
 
@@ -24,7 +24,7 @@ unit_client.do_move((20, 30))
 
 ... that code commands units to go to the point (20, 30), but the unit will never get to the point (30, 30).
 
-**Subscriptions** are started with _when_. The subscribe function always has a callback argument. Callback is the function that gets called when a specific action occurs. For example, check out the following code...
+**Subscriptions** are started with _when_. The subscribe function always has a callback argument. Callback is the function that gets called when a specific event occurs. For example, check out the following code...
 
 ```python
 from battle import commander
@@ -122,12 +122,6 @@ for units with level 4 or more.
 - `do_message_to_craft(message)` send a message to all units from your craft.
 
 - `do_message_to_team(message)` send a message to all units from your team.
-
-### Rocket Gun
-
-for RocketGun only.
-
- - `do_attack_coordinates(coordinates)` send a rocket to the point with the given coordinates. _coordinates_: list/tuple of two int/float.
 
 
 ## Subscribes.
