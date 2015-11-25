@@ -13,7 +13,7 @@ print("My ID:{}".format(my_info['id']))
 
 ... this shows a unit's ID in the battle console.
 
-**Actions** are started with _do_. The Action function sends a command to a unit. The unit can only hold information about the last command, so every following command will overwrite previous one. Check out this code...
+**Actions** are started with _do_. The Action function sends a command to a unit. The unit can only hold information about the last command, so every following command will overwrite previous one. For example, check out the following code...
 
 ```python
 from battle import commander
@@ -22,9 +22,9 @@ unit_client.do_move((30, 30))
 unit_client.do_move((20, 30))
 ```
 
-... That code commands units to go to the point (20, 30), but the unit will never get to the point (30, 30).
+... that code commands units to go to the point (20, 30), but the unit will never get to the point (30, 30).
 
-**Subscriptions** are started with _when_. The subscribe function always has a callback argument. Callback is the function that gets called when a specific action occurs. For example:
+**Subscriptions** are started with _when_. The subscribe function always has a callback argument. Callback is the function that gets called when a specific action occurs. For example, check out the following code...
 
 ```python
 from battle import commander
@@ -36,7 +36,7 @@ def attack_near_enemy(data):
 unit_client.when_enemy_in_range(attack_near_enemy)
 ```
 
-... That commands the unit to attack any enemy that comes into its firing range.
+... that commands the unit to attack any enemy that comes into its firing range.
 
 **Prints**. Feel free to use the _print_ function and see every script's output in the right-hand panel for battle replays.
 
