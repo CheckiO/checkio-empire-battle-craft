@@ -111,8 +111,7 @@ from battle import ROLE
 - `do_attack(item_id)` Attack the item with `id == item_id`.
     If the target is too far, then the unit will move to the target.
 
-- `do_move(coordinates)` A unit only command.
-    Move to the point with the given coordinates. _coordinates_: list/tuple of two int/float.
+- `do_move(coordinates)` move to the point with the given coordinates. _coordinates_: list/tuple of two int/float.
 
 ### LEVEL 4
 
@@ -123,6 +122,12 @@ for units with level 4 or more.
 - `do_message_to_craft(message)` send a message to all units from your craft.
 
 - `do_message_to_team(message)` send a message to all units from your team.
+
+### Rocket Gun
+
+for RocketGun only.
+
+ - `do_attack_coordinates(coordinates)` send a rocket to the point with the given coordinates. _coordinates_: list/tuple of two int/float.
 
 
 ## Subscribes.
