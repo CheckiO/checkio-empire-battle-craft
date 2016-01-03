@@ -18,8 +18,8 @@ console.log("My ID: " + myInfo.id);
 ```javascript
 var Client = require("battle/commander.js").Client;
 var client = new Client();
-client.doMove((30, 30));
-client.doMove((20, 30));
+client.doMove([30, 30]);
+client.doMove([20, 30]);
 ```
 
 ... that code commands units to go to the point (20, 30), but the unit will never get to the point (30, 30).
