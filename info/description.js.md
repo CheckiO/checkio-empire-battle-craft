@@ -22,7 +22,7 @@ client.doMove([30, 30]);
 client.doMove([20, 30]);
 ```
 
-... that code commands units to go to the point (20, 30), but the unit will never get to the point (30, 30).
+... that code commands units to go to the point [20, 30], but the unit will never get to the point [30, 30].
 
 **Subscriptions** are started with _when_. The subscribe function always has a callback argument. Callback is the function that gets called when a specific event occurs. For example, check out the following code...
 
@@ -58,7 +58,7 @@ Units, towers, buildings and other objects on the map are called "items". When y
 - "player_id": (int) the ownership of the item.
 - "role": (str) Describes the role of the item. It can be a `unit`, `tower`, `building`, `center`, or `obstacle`. You can read more below on the different roles.
 - "hit_points": (int/float) Defines the durability of the item. If "hit_points" is zero or lower, the item is destroyed.
-- "coordinates": (list of two int/float): The item's location coordinates. Units are single point objects.
+- "coordinates": (array of two int/float): The item's location coordinates. Units are single point objects.
   For large objects such as buildings, this field contains the coordinates of the center (middle) point.
 - "size": (int/float) Units don't have a size. All static objects (buildings, towers etc) are square and the edge length is equal to their "size".
 - "action": (str) What the item is doing. It can be `idle`, `move`, `shoot`, or `charge`.
@@ -113,7 +113,7 @@ from battle import ROLE
     If the target is too far, then the unit will move to the target.
 
 - `doMove(coordinates)` A unit only command.
-    Move to the point with the given coordinates. _coordinates_: list/tuple of two int/float.
+    Move to the point with the given coordinates. _coordinates_: array of two int/float values.
 
 ### LEVEL 4
 
