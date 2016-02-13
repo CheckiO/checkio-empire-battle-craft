@@ -49,11 +49,12 @@ Units, towers, buildings and other objects on the map are called "items". When y
 - "id": (int) Unique identifier for the item. All items have this field.
 - "player_id": (int) the ownership of the item.
 - "role": (str) Describes the role of the item. It can be a `unit`, `tower`, `building`, `center`, or `obstacle`. You can read more below on the different roles.
+- "type": (str) Describes the type of the item. It can be a `sentryGun`, `infantryBot` etc.
 - "hit_points": (int/float) Defines the durability of the item. If "hit_points" is zero or lower, the item is destroyed.
 - "coordinates": (list of two int/float): The item's location coordinates. Units are single point objects.
   For large objects such as buildings, this field contains the coordinates of the center (middle) point.
 - "size": (int/float) Units don't have a size. All static objects (buildings, towers etc) are square and the edge length is equal to their "size".
-- "action": (str) What the item is doing. It can be `idle`, `move`, `shoot`, or `charge`.
+- "status": (dict) What the item is doing.
 - "speed": (int/float) This is a unit attribute only. It describes how fast the unit may move.
 - "damage_per_shot": (int/float) This is a unit/tower attribute which describes how many hit points an attack will take.
 - "rate_of_fire": (int/float) This is a unit/tower attribute which describes how many attacks per second the item can take.
@@ -63,8 +64,8 @@ Units, towers, buildings and other objects on the map are called "items". When y
 
 You can use predefined constants instead of string variables.
 
-```python
-from battle import ROLE
+```javascript
+var ROLE = require("battle/terms.js").ROLE;
 ```
 
 - `unit` - Mobile fighting items, these come from crafts. `ROLE.UNIT`
@@ -96,6 +97,11 @@ from battle import ROLE
 - `askMyRangeEnemyItems()`  
     Returns a list with information on all enemies in the current items firing range.
 
+```javascript
+var ROLE = require("battle/terms.js").ROLE;
+near_tower = client.askNearestEnemy([ROLE.TOWER])
+```
+
 - `askCurTime()`
     Returns current in-game time. (secs)
 
@@ -106,6 +112,21 @@ from battle import ROLE
 
 - `doMove(coordinates)` A unit only command.
     Move to the point with the given coordinates. _coordinates_: list/tuple of two int/float.
+
+- `doMoves(steps)` A unit only command.
+    Move through the list of coordinates.
+
+```javascript
+client.doMoves([
+  [35, 35],
+  [35, 20]
+])
+
+client.whenIdle().then(function(){
+  client.doAttack(client.askCenter().id)
+})
+
+```
 
 ### LEVEL 4
 

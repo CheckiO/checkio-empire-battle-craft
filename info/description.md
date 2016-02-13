@@ -48,12 +48,13 @@ Units, towers, buildings and other objects on a map are called "items". When you
 - "id": (int) Unique identifier of the item. All items have this field.
 - "player_id": (int) Ownership of the item.
 - "role": (str) Describes the role of the item. It can be a `unit`, `tower`, `building`, `center`, or `obstacle`. You can read more below on the different roles.
+- "type": (str) Describes the type of the item. It can be a `sentryGun`, `infantryBot` etc.
 - "hit_points": (int/float) Defines the durability of the item. If "hit_points" is zero or lower, then
   the item is destroyed.
 - "coordinates": (list of two int/float): Item location coordinates. Units are single point objects.
   For large objects such as buildings, this field contains the coordinates of the center (middle) point.
 - "size": (int/float) Units don't have a size. All static objects (buildings, towers etc) are square and the edge length is equal to their "size".
-- "action": (str) What the item is doing. It can be `idle`, `move`, `shoot`, or `charge`.
+- "status": (dict) What the item is doing.
 - "speed": (int/float) This is a unit attribute only. It describes how fast the unit may move.
 - "damage_per_shot": (int/float) This is a unit/tower attribute which describes how many hit points a shot will take.
 - "rate_of_fire": (int/float) This is a unit/tower attribute which describes how many shots per second the item can take.
@@ -94,10 +95,18 @@ from battle import ROLE
 
 - `ask_nearest_enemy()` Returns information about the nearest enemy item.
 
+- `ask_nearest_enemy(role_list)` Returns information about the nearest enemy item with role from `role_list`.
+
+```python
+from battle import ROLE
+near_tower = unit_client.ask_nearest_enemy([ROLE.TOWER])
+
+```
+
 - `ask_my_range_enemy_items()`  
     Returns a list with information on all enemies in the current item's firing range.
 
-- `ask_cur_time`
+- `ask_cur_time()`
     Returns current in-game time. (secs)
 
 ## Commands.
@@ -107,6 +116,21 @@ from battle import ROLE
 
 - `do_move(coordinates)` A unit only command.
     Move to the point with the given coordinates. _coordinates_: list/tuple of two int/float.
+
+- `do_moves(steps)` A unit only command.
+    Move through the list of coordinates.
+
+```python
+unit_client.do_moves([
+  [35, 35],
+  [35, 20]
+])
+def do_attack_center(*args):
+  unit_client.do_atack(unit_client.ask_center()['id'])
+
+unit_client.when_idle(do_attack_center)
+
+```
 
 ### LEVEL 4
 
