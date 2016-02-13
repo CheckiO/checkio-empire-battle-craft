@@ -1,66 +1,64 @@
 "use strict";
 
-function Client() {
-    this.loop = {};
-    this.myInfo = undefined;
-}
+function Client() {}
 
-Client.prototype.start = function () {
-    return;
+var SAMPLE_ITEM_INFO = {
+    'id': 41,
+    'player_id': 1,
+    'role': "unit",
+    'type': 'rocketBot',
+    'hit_points': 100,
+    'size': 0,
+    'speed': 5,
+    'coordinates': [35, 17],
+    'rate_of_fire': 7,
+    'damage_per_shot': 50,
+    'area_damage_per_shot': 0,
+    'area_damage_radius': 0,
+    'firing_range': 5,
+    'status': {'action': 'idle'},
 };
 
 // ASK
 
-Client.prototype.ask = function () {
-    return;
-};
-
 Client.prototype.askMyInfo = function () {
-    return {};
+    return SAMPLE_ITEM_INFO;
 };
 
 Client.prototype.askItemInfo = function () {
-    return {};
+    return SAMPLE_ITEM_INFO;
 };
 
 Client.prototype.askNearestEnemy = function () {
-    return {};
+    return SAMPLE_ITEM_INFO;
 };
 
 Client.prototype.askItems = function () {
-    return [];
+    return [SAMPLE_ITEM_INFO, SAMPLE_ITEM_INFO];
 };
 
 Client.prototype.askEnemyItems = function () {
-    return [];
+    return [SAMPLE_ITEM_INFO, SAMPLE_ITEM_INFO];
 };
 
 Client.prototype.askMyItems = function () {
-    return [];
+    return [SAMPLE_ITEM_INFO, SAMPLE_ITEM_INFO];
 };
 
 Client.prototype.askBuildings = function () {
-    return [];
+    return [SAMPLE_ITEM_INFO, SAMPLE_ITEM_INFO];
 };
 
 Client.prototype.askTowers = function () {
-    return [];
+    return [SAMPLE_ITEM_INFO, SAMPLE_ITEM_INFO];
 };
 
 Client.prototype.askCenter = function () {
-    return {};
+    return SAMPLE_ITEM_INFO;
 };
 
 Client.prototype.askUnits = function () {
-    return [];
-};
-
-Client.prototype.askPlayers = function () {
-    return [];
-};
-
-Client.prototype.askEnemyPlayers = function () {
-    return [];
+    return [SAMPLE_ITEM_INFO, SAMPLE_ITEM_INFO];
 };
 
 Client.prototype.askMyRangeEnemyItems = function () {
@@ -68,21 +66,21 @@ Client.prototype.askMyRangeEnemyItems = function () {
 };
 
 Client.prototype.askCurTime = function () {
-    return [];
+    return 1;
 };
 
 
 // DO
-
-Client.prototype.do = function () {
-    return;
-};
 
 Client.prototype.doAttack = function () {
     return;
 };
 
 Client.prototype.doMove = function () {
+    return;
+};
+
+Client.prototype.doMoves = function () {
     return;
 };
 
