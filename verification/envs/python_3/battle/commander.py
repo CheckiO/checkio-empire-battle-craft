@@ -69,7 +69,7 @@ class Client(object):
     def ask_units(self):
         return [SAMPLE_ITEM_INFO, SAMPLE_ITEM_INFO]
 
-    def ask_nearest_enemy(self):
+    def ask_nearest_enemy(self, roles=None):
         return SAMPLE_ITEM_INFO
 
     def ask_my_range_enemy_items(self):
