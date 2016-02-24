@@ -1,3 +1,5 @@
+**In Campaign mode, you can check your strategies on already defeated bases. You will not lose your troops.**
+
 Let's work on some new code for our units. All units in the current craft run the same code which starts when a battle begins. The script you are currently writing will command one craft. So if a craft has 7 units inside, that means 7 copies of this script will be launched.
 
 The commanding principles are based on the 3 main groups of functions.
